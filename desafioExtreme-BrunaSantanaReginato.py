@@ -1,7 +1,6 @@
 import psutil
 import mysql.connector
 
-
 db_connection = mysql.connector.connect(host='localhost', user='root', password='150621', database='desafioExtreme')
 cursor = db_connection.cursor()
 
@@ -11,14 +10,15 @@ resultadoMaquina = cursor.fetchall()
 i = 0
 j = 0
 
-while i == 0:
+while j == 0:
 
     print("OPÇÕES DE MÁQUINAS")
-
-    for m in resultadoMaquina:
-        i = i + 1
-        print(f"Máquina {i} - {m[0]}")  
-
+    print("""
+    M1
+    M2
+    M3
+    M4
+    """)
 
     opcaoMaquina = input("Selecione a máquina que você deseja monitorar:")
 
@@ -79,34 +79,35 @@ while i == 0:
         print(f"""
         MONITORAMENTO DA SUA MÁQUINA
         -------------------------------------------      
-        Frequência CPU: {psutil.virtual_memory().percent}
+        Percentual Memória: {psutil.virtual_memory().percent}
         """)
     elif(opcaoComponente == 2  and  opcaoMedida == 2):
         print(f"""
         MONITORAMENTO DA SUA MÁQUINA
         -------------------------------------------      
-        Frequência CPU: {psutil.virtual_memory().total}
+        Bytes Memória: {psutil.virtual_memory().total}
         """)
 
     if(opcaoComponente == 3  and  opcaoMedida == 1):
         print(f"""
         MONITORAMENTO DA SUA MÁQUINA
         -------------------------------------------      
-        Frequência CPU: {psutil.disk_usage('C:\\').percent}
+        Percentual Disco: {psutil.disk_usage('C:\\').percent}
         """)
     elif(opcaoComponente == 3  and  opcaoMedida == 2):
         print(f"""
         MONITORAMENTO DA SUA MÁQUINA
         -------------------------------------------      
-        Frequência CPU: {psutil.disk_usage('C:\\').total}
+        Bytes Disco: {psutil.disk_usage('C:\\').total}
         """)
 
-    continuar=str(input('Digite "SIM" para calcular outro IMC | Digite "NAO" para sair -> '))
+
+    continuar=str(input('Digite "SIM" para realizar outro registro | Digite "NAO" para sair -> '))
     if continuar == "SIM":
-        i = 0
+        j = 0
         print("\n" * 130)
     else:
-        i = 1
+        j = 1
         print("\n" * 130)
         print("Muito obrigada por participar do nosso sistema!!!")
 
